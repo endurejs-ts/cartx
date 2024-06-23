@@ -3,8 +3,11 @@ import { A, B } from './type';
 
 const node = {};
 
+class Subcategory {}
+
 class AccurateCategory {
     value(value: string) {}
+    show() {}
 }
 
 class CategoryReturn {
@@ -24,6 +27,30 @@ class CategoryReturn {
     accurate(): AccurateCategory {
         return new AccurateCategory();
     }
+
+    subcategory(value: string) {
+        return new Subcategory();
+    }
+
+    show() {
+        console.log(`category: ${this.name}\nvalue: ${this.node.value}`);
+    }
+
+    values(...value: B[]) {
+        const testr = value.join(", ");
+
+        if (!this.node["category"]) {
+            this.node["category"] = this.name;
+        }
+
+        else {
+            return;
+        }
+
+        this.node["value"] = testr;
+    }
+
+    customcartx() {}
 }
 
 function category(node: Record<A, B>, name: string, options?: any): CategoryReturn {
